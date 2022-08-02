@@ -9,3 +9,12 @@ class Users(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+class Product(models.Model):
+    product_id=models.AutoField
+    product_name=models.CharField(max_length=300)
+    desc=models.CharField(max_length=700)
+    pub_date=models.DateField()
+    

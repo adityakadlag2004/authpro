@@ -16,8 +16,7 @@ def logout_view(request):
     return redirect('/login')
 
 
-def demopage(request):
-    return render(request, 'demo.html')
+
 
 
 def demoauth(request):
@@ -34,17 +33,16 @@ def demoauth(request):
             if user is not None:
                 login(request, user)
                 context = {'name': username, 'email': email}
-                return render(request,'index.html',context)
+                return redirect('/',context)
             else:
                 return render(request, 'login.html')
         else:
             email = request.POST.get('email')
             user = User.objects.create_user(username, email, password)
             user.save()
-
             context = {'name': username, 'email': email}
             login(request, user)
             messages.success(request, 'Profile details Added.')
-            return render(request,'index.html',context)
+            return redirect('/',context)
 
     return render(request, 'demo.html')
