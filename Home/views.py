@@ -9,6 +9,21 @@ def index(request):
     if request.user.is_anonymous:
         return redirect('/login')
     return render(request, 'index.html')
+# Create your views here.
+def contact(request):
+    if request.user.is_anonymous:
+        return redirect('/login')
+    return render(request, 'contact.html')
+# Create your views here.
+def tracker(request):
+    return render(request, 'tracker.html')
+
+# Create your views here.
+def productview(request):
+    return render(request, 'productview.html')
+# Create your views here.
+def checkout(request):
+    return render(request, 'checkout.html')
 
 
 def logout_view(request):
