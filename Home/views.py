@@ -3,35 +3,48 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
+from .models import Product
+from math import ceil
+
 
 # Create your views here.
-def index(request):
-    if request.user.is_anonymous:
+def index(request_ind):
+    if request_ind.user.is_anonymous:
         return redirect('/login')
-    return render(request, 'index.html')
-# Create your views here.
-def contact(request):
-    if request.user.is_anonymous:
-        return redirect('/login')
-    return render(request, 'contact.html')
-# Create your views here.
-def tracker(request):
-    return render(request, 'tracker.html')
+    products = Product.objects.all()
+    n = len(products)
+    print("No of Products : ", n)
+    no_of_slides = n // 4 + ceil((n / 4) - (n // 4))
+    all_prods = [[products, range(1, no_of_slides), no_of_slides], [products, range(1, no_of_slides), no_of_slides]]
+    params = {"all_prods": all_prods}
+    return render(request_ind, 'index.html', params)
+
 
 # Create your views here.
-def productview(request):
-    return render(request, 'productview.html')
+def contact(request_con):
+    if request_con.user.is_anonymous:
+        return redirect('/login')
+    return render(request_con, 'contact.html')
+
+
 # Create your views here.
-def checkout(request):
-    return render(request, 'checkout.html')
+def tracker(request_tra):
+    return render(request_tra, 'tracker.html')
+
+
+# Create your views here.
+def productview(request_pr_view):
+    return render(request_pr_view, 'productview.html')
+
+
+# Create your views here.
+def checkout(request_checkout):
+    return render(request_checkout, 'checkout.html')
 
 
 def logout_view(request):
     logout(request)
     return redirect('/login')
-
-
-
 
 
 def demoauth(request):
@@ -48,7 +61,7 @@ def demoauth(request):
             if user is not None:
                 login(request, user)
                 context = {'name': username, 'email': email}
-                return redirect('/',context)
+                return redirect('/', context)
             else:
                 return render(request, 'login.html')
         else:
@@ -58,6 +71,6 @@ def demoauth(request):
             context = {'name': username, 'email': email}
             login(request, user)
             messages.success(request, 'Profile details Added.')
-            return redirect('/',context)
+            return redirect('/', context)
 
     return render(request, 'demo.html')
