@@ -1,13 +1,44 @@
 {% extends 'base.html' %} {% block title %} Home {% endblock title %} 
 {% block username %} {{ name }} {% endblock username %} 
 {% block styleinp %} 
-.col-md-3 {
-display: inline-block; margin-left:-4px; } .carousel-indicators .active {
-background-color: blue; } .col-md-3 img{ width: 227px; max-height: 242px; } body
-.carousel-indicator li{ background-color: blue; } body .carousel-indicators{
-bottom: 0; } body .carousel-control-prev-icon, body .carousel-control-next-icon{
-background-color: blue; } .carousel-control-prev, .carousel-control-next{ top:
-auto; bottom: auto; } body .no-padding{ padding-left: 0, padding-right: 0; } 
+.col-md-3
+{
+display: inline-block;
+margin-left:-4px;
+}
+
+.carousel-indicators .active {
+background-color: blue;
+  }
+
+.col-md-3 img{
+
+max-width: 227px;
+height: 242px;
+}
+
+body .carousel-indicator li{
+background-color: blue;
+}
+
+body .carousel-indicators{
+bottom: 0;
+}
+
+body .carousel-control-prev-icon,
+body .carousel-control-next-icon{
+background-color: blue;
+}
+
+.carousel-control-prev,
+.carousel-control-next{
+top: auto;
+bottom: auto;
+}
+ body .no-padding{
+ padding-left: 0,
+ padding-right: 0;
+ }
 {% endblock styleinp %} 
 {% block body %}
 <!--        carousel indicators starts from here-->
@@ -41,24 +72,7 @@ auto; bottom: auto; } body .no-padding{ padding-left: 0, padding-right: 0; }
 
     <div class="container carousel-inner no-padding">
       <div class="carousel-item active">
-        <div class="col-xs-3 col-sm-3 col-md-3">
-          <div class="card" style="width: 18rem">
-            <img src="{{products.0.image}}" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">{{products.0.product_name}}</h5>
-              <p class="card-text">{{products.0.desc}}</p>
-              <button
-                id="pr{{products.0.id}}"
-                href="#"
-                class="btn btn-primary cart"
-              >
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {% for i in products|slice:"1:"%}
+        {% for i in products %}
         <div class="col-xs-3 col-sm-3 col-md-3">
           <div class="card" style="width: 18rem">
             <img src="{{i.image}}" class="card-img-top" alt="..." />
@@ -71,10 +85,12 @@ auto; bottom: auto; } body .no-padding{ padding-left: 0, padding-right: 0; }
             </div>
           </div>
         </div>
-        {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not
-        forloop.last %}
+        {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
       </div>
-      <div class="carousel-item">{% endif %} {% endfor %}</div>
+      <div class="carousel-item">
+        {% endif %}
+        {% endfor %}
+        </div>
     </div>
   </div>
   <!-- left and right controls for the slide -->
@@ -96,23 +112,28 @@ auto; bottom: auto; } body .no-padding{ padding-left: 0, padding-right: 0; }
 </div>
 {% endblock %} {% block js %}
 <script>
-  if(localStorage.getItem('cart')==null){
-      var cart={}
-  }else{
-      cart=JSON.parse(localStorage.getItem('cart'));
+  console.log('working');
+  if(localStorage.getItem('cart') == null){
+  var cart = {};
   }
-
+  else
+  {
+  cart = JSON.parse(localStorage.getItem('cart'));
+  }
   $('.cart').click(function(){
-      console.log(' clicked' );
-      var idstr=this.id.toString();
-      console.log(idstr);
-      if (cart[idstr] ! =undefined) {
-          cart[idstr] cart[idstr] + 1 ;
-          }
-          else
-          {
-          cart[idstr] + 1
-          }
+  console.log('clicked');
+  var idstr = this.id.toString();
+  console.log(idstr);
+  if (cart[idstr] !=undefined){
+  cart[idstr] = cart[idstr] + 1;
+  }
+  else
+  {
+  cart[idstr] = 1;
+  }
+  console.log(cart);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  document.getElementById('cart').innerHTML= Object.keys(cart).length;
   });
-</script>
+  </script>
 {% endblock js %}
