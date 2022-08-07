@@ -2,44 +2,44 @@
 {% block username %} {{ name }} {% endblock username %}
 
 {% block styleinp %}
-      .col-md-3
-          {
-          display: inline-block;
-          margin-left:-4px;
-          }
+.col-md-3
+{
+display: inline-block;
+margin-left:-4px;
+}
 
-          .carousel-indicators .active {
-          background-color: blue;
-            }
+.carousel-indicators .active {
+background-color: blue;
+}
 
-          .col-md-3 img{
+.col-md-3 img{
 
-          width: 227px;
-          max-height: 242px;
-          }
+width: 227px;
+max-height: 242px;
+}
 
-          body .carousel-indicator li{
-          background-color: blue;
-          }
+body .carousel-indicator li{
+background-color: blue;
+}
 
-          body .carousel-indicators{
-          bottom: 0;
-          }
+body .carousel-indicators{
+bottom: 0;
+}
 
-          body .carousel-control-prev-icon,
-          body .carousel-control-next-icon{
-          background-color: blue;
-          }
+body .carousel-control-prev-icon,
+body .carousel-control-next-icon{
+background-color: blue;
+}
 
-          .carousel-control-prev,
-          .carousel-control-next{
-          top: auto;
-          bottom: auto;
-          }
-           body .no-padding{
-           padding-left: 0,
-           padding-right: 0;
-           }
+.carousel-control-prev,
+.carousel-control-next{
+top: auto;
+bottom: auto;
+}
+body .no-padding{
+padding-left: 0,
+padding-right: 0;
+}
 
 {% endblock styleinp %}
 
@@ -109,3 +109,14 @@
     {% endfor %}
 </div>
 {% endblock %}
+
+
+{% block js %}
+<script>
+    if(localStorage.getItem('cart')==null){
+
+    }else{
+
+    }
+</script>
+{% endblock js %}

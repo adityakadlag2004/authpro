@@ -11,11 +11,14 @@ from math import ceil
 def index(request_ind):
     if request_ind.user.is_anonymous:
         return redirect('/login')
-    products = Product.objects.all()
-    n = len(products)
-    print("No of Products : ", n)
-    no_of_slides = n // 4 + ceil((n / 4) - (n // 4))
-    all_prods = [[products, range(1, no_of_slides), no_of_slides], [products, range(1, no_of_slides), no_of_slides]]
+    all_prods = []
+    catprods = Product.objects.values('category', 'id')
+    cats = {item['category'] for item in catprods}
+    for cat in cats:
+        prod = Product.objects.filter(category=cat)
+        n = len(prod)
+        no_of_slides = n // 4 + ceil((n / 4) - (n // 4))
+        all_prods.append([prod, range(1, no_of_slides), no_of_slides])
     params = {"all_prods": all_prods}
     return render(request_ind, 'index.html', params)
 
