@@ -20,6 +20,9 @@
       {% block styleinp %}
 
         {% endblock styleinp %}
+      {% block css %}
+
+        {% endblock css %}
     </style>
 
     <title>{% block title %} {% endblock title %}</title>
@@ -46,111 +49,6 @@
       </div>
       {% endfor %} {% endif %}
 
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <!-- Container wrapper -->
-        <div class="container-fluid">
-          <!-- Navbar brand -->
-          <img src="static/logo.png" class="m-0 p-0" width="70" height="30" />
-          <a class="navbar-brand" href="/">Sasta Amazon</a>
-
-          <!-- Toggle button -->
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <!-- Collapsible wrapper -->
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left links -->
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item text-center">
-                <a class="nav-link active mt-1" aria-current="page" href="/">
-                  <div>
-                    <i class="fas fa-home fa-lg mb-1"></i>
-                  </div>
-                  Home
-                </a>
-              </li>
-              <li class="nav-item text-center mx-2 mx-lg-1 mt-1">
-                <a class="nav-link" href="/">
-                  <div>
-                    <i class="far fa-envelope fa-lg mb-1"></i>
-                  </div>
-                  Link
-                </a>
-              </li>
-              <li class="nav-item text-center mx-2 mx-lg-1">
-                <a class="nav-link mt-1" href="/">
-                  <div>
-                    <i class="fas fa-bell fa-lg mb-1"></i>
-                  </div>
-                  Messages
-                </a>
-              </li>
-                            <li class="nav-item text-center mx-2 mx-lg-1">
-                <a class="nav-link mt-1" href="/">
-                  <div>
-                    <i class="fas fa-globe-americas fa-lg mb-1"></i>
-                  </div>
-                  News
-                </a>
-              </li>
-              <li class="nav-item text-center mx-2 mx-lg-1">
-                <a class="nav-link mt-1" href="/">
-                  <div>
-                    <i class="fas fa-globe-americas fa-lg mb-1"></i>
-                  </div>
-                  Cart(<span id="cart">0</span>)
-                </a>
-              </li>
-
-            </ul>
-
-            <li>
-              <!-- Search form -->
-              <form class="d-flex input-group w-auto ms-lg-1 my-1 my-lg-0 mb-2">
-                <input
-                  type="search"
-                  class="form-control ml-2 mr-2"
-                  style="width: 310px; align-self: center; align-items: stretch"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-              </form>
-            </li>
-            <li>
-              <div class="container-fluid align-items-center">
-                <button
-                  class="btn btn-primary"
-                  type="button"
-                  data-mdb-ripple-color="dark"
-                  style="height: 40px"
-                >
-                  Search
-                </button>
-                <button
-                  class="btn btn-danger"
-                  type="button"
-                  data-mdb-ripple-color="dark"
-                  style="height: 40px"
-                  onclick="logoutuser()"
-                >
-                  Logout
-                </button>
-              </div>
-            </li>
-          </div>
-          <!-- Collapsible wrapper -->
-        </div>
-        <!-- Container wrapper -->
-      </nav>
     </div>
     {% block body %} {% endblock body %}
 
