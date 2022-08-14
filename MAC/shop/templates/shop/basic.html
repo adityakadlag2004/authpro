@@ -61,14 +61,14 @@
           <input
             class="form-control mr-sm-2"
             type="search"
-            id="search_item"
-            name="search_item"
+            id="product_name"
+            name="product_name"
             placeholder="Search"
             aria-label="Search"
           />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <a href= "shop/search/{{product_name}}"> <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >
             Search
-          </button>
+          </button></a>
         </form>
         <button type="button" class="btn btn-secondary mx-2" id="popcart" data-placement="bottom" data-bs-toggle="popover" data-html='true' data-bs-content="And here's some amazing content. It's very engaging. Right?">
           Your Cart(<span id="cart">0</span>)
@@ -79,11 +79,9 @@
     {% block body%} {% endblock %}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
       integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
