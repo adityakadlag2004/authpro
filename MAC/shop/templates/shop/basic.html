@@ -56,13 +56,10 @@
             <a class="nav-link" href="/shop/contact">Contact Us</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0" method="GET" action="/shop/search">
-          {% csrf_token %}
+        <form class="form-inline my-2 my-lg-0">
           <input
             class="form-control mr-sm-2"
             type="search"
-            id="search_item"
-            name="search_item"
             placeholder="Search"
             aria-label="Search"
           />

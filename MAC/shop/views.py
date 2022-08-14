@@ -1,5 +1,5 @@
-from django.shortcuts import render,redirect
-from django.http import HttpResponse
+from django.shortcuts import render
+
 from .models import Product, Contact, Order
 from math import ceil
 
@@ -20,18 +20,7 @@ def index(request):
 
 
 def search(request):
-    if request.method == 'GET':
-        print(request)
-        product_nm = request.GET.get('search_item', '')
-        print(product_nm)
-        prod=None
-        prod = Product.objects.filter(productName=product_nm)
-        if prod[0] is not None:
-            return render(request, 'shop/search.html',{"product":prod[0]})    
-    print("Redirect")
-    return redirect('shop/index.html')
-
-    
+    return render(request, 'shop/search.html')
 
 
 def about(request):
