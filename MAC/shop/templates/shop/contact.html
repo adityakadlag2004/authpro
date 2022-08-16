@@ -25,5 +25,19 @@
 
 </form>
 
+
+
 </div>
+
+
   {% endblock %}
+
+  {% block js %}
+<script>
+  {% if thank %}
+  alert('Thanks for Contacting with us. Your issue wil be resolved');
+  localStorage.clear();
+  document.location = "/shop";
+  {% endif %}
+</script>
+{% endblock js %}
