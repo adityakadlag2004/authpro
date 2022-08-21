@@ -1,9 +1,14 @@
 from django.shortcuts import render
+from .models import Blogpost
 
 
 def index(request):
-    return render(request, 'blog/index.html')
+    blogs = Blogpost.objects.all()
+    print("length = ",blogs)
+    return render(request, 'blog/index.html',{"blogs":blogs})
 
 
-def blogpost(request):
-    return render(request,"blog/blogpost.html")
+def BlogPost(request,id):
+    post=Blogpost.objects.filter(post_id=id)[0]
+    print(post)
+    return render(request,"blog/Blogpost.html",{"post":post})

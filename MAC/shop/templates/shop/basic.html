@@ -59,13 +59,13 @@
             <a class="nav-link" href="/blog">Blog</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0" method="GET" action="/shop/search">
+        <form class="form-inline my-2 my-lg-0" method="GET" action="/shop/search/">
           {% csrf_token %}
           <input
             class="form-control mr-sm-2"
             type="search"
-            id="product_name"
-            name="product_name"
+            id="search"
+            name="search"
             placeholder="Search"
             aria-label="Search"
           />
